@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Zoe Studio creator publishing workspace." />
+  <title>Studio — Zoe Studio</title>
+  <link rel="icon" href="/assets/zoe-studio-icon.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav"><a class="brand" href="/"><img src="/assets/zoe-studio-icon.jpg" alt="Zoe Studio" /><span>Zoe Studio</span></a><nav class="nav-links"><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy Policy</a></nav></div></header>
+  <main class="wrap studio-shell">
+    <div class="section-head"><div class="eyebrow">Creator workspace</div><h2>Prepare a post</h2><p>Connect your account, choose your content, review the latest creator-specific publishing controls, and explicitly confirm the post.</p></div>
+    <div class="studio-grid">
+      <aside class="studio-panel">
+        <h3>Connected account</h3>
+        <div id="accountStatus" class="status">Checking connection…</div>
+        <div id="accountProfile" class="account-profile hidden"><img id="accountAvatar" alt="Creator avatar" /><div><strong id="accountName"></strong><div id="accountHandle" class="help"></div></div></div>
+        <div style="display:grid;gap:10px;margin-top:16px">
+          <a id="connectButton" class="button primary" href="/api/tiktok/oauth/start">Connect TikTok</a>
+          <button id="refreshCreator" class="button secondary hidden" type="button">Refresh creator controls</button>
+          <button id="disconnectButton" class="button danger hidden" type="button">Disconnect session</button>
+        </div>
+        <p class="help">Zoe Studio requests only the scopes needed for sign-in and creator-authorized publishing. No publication is initiated without your confirmation.</p>
+      </aside>
+
+      <section class="studio-panel">
+        <div class="tabs" role="tablist" aria-label="Post type">
+          <button class="tab active" id="videoTab" type="button" role="tab" aria-selected="true">Video</button>
+          <button class="tab" id="photoTab" type="button" role="tab" aria-selected="false">Photos</button>
+        </div>
+
+        <form id="postForm">
+          <div id="videoFields">
+            <div class="field"><label for="videoFile">Original video file</label><input id="videoFile" name="video" type="file" accept="video/mp4,video/webm,video/quicktime" /><video id="videoPreview" class="media-preview hidden" controls playsinline></video><div id="videoDurationHelp" class="help">The file is transferred only after you review the post and confirm publication.</div></div>
+          </div>
+
+          <div id="photoFields" class="hidden">
+            <div class="field"><label for="photoFiles">Original photos</label><input id="photoFiles" type="file" accept="image/jpeg,image/webp" multiple /><div class="help">JPEG and WebP, up to 20 MB each. Photos are stored under randomized temporary URLs and automatically expire.</div></div>
+            <div id="photoPreview" class="photo-preview-grid"></div><div id="photoList" class="photo-list"></div>
+          </div>
+
+          <div class="field"><label for="title">Title / caption</label><textarea id="title" maxlength="2200" placeholder="Write your caption, hashtags, or mentions."></textarea><div id="titleHelp" class="help">Maximum 2,200 UTF-16 code units for video posts.</div></div>
+
+          <div id="photoDescriptionField" class="field hidden"><label for="photoDescription">Photo description</label><textarea id="photoDescription" maxlength="4000" placeholder="Describe your photo post."></textarea><div class="help">Photo title is limited separately; the description can contain up to 4,000 UTF-16 code units.</div></div>
+
+          <div class="field"><label for="privacy">Privacy status</label><select id="privacy" required><option value="" selected disabled>Select a privacy level</option></select><div class="help">No privacy option is selected by default. Choices are loaded from the connected creator account.</div></div>
+
+          <div class="field">
+            <label>Interaction settings</label>
+            <div class="toggle-grid">
+              <label id="commentWrap" class="toggle"><input id="allowComment" type="checkbox" /> <span><strong>Allow comments</strong><br><span class="help">Off by default.</span></span></label>
+              <label id="duetWrap" class="toggle"><input id="allowDuet" type="checkbox" /> <span><strong>Allow Duet</strong><br><span class="help">Video only. Off by default.</span></span></label>
+              <label id="stitchWrap" class="toggle"><input id="allowStitch" type="checkbox" /> <span><strong>Allow Stitch</strong><br><span class="help">Video only. Off by default.</span></span></label>
+              <label class="toggle"><input id="isAigc" type="checkbox" /> <span><strong>AI-generated content</strong><br><span class="help">Use when the media is AI-generated.</span></span></label>
+              <label class="toggle"><input id="commercialToggle" type="checkbox" /> <span><strong>Disclose commercial content</strong><br><span class="help">Off by default. Turn on only when this content promotes yourself, a brand, product, or service.</span></span></label>
+              <div></div>
+              <div id="commercialOptions" class="commercial-options hidden">
+                <label class="toggle"><input id="brandOrganic" type="checkbox" /> <span><strong>Your brand</strong><br><span class="help">You are promoting yourself or your own business.</span></span></label>
+                <label class="toggle"><input id="brandContent" type="checkbox" /> <span><strong>Branded content</strong><br><span class="help">You are promoting another brand or a third party.</span></span></label>
+                <div id="commercialHint" class="help hidden" role="status" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+
+          <label class="toggle consent"><input id="consent" type="checkbox" required /> <span><strong>I have reviewed this post and expressly consent to send it to TikTok.</strong><br><span id="consentText" class="help">By posting, you agree to TikTok's <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener noreferrer">Music Usage Confirmation</a>.</span></span></label>
+          <div class="notice">After publishing, TikTok may take a few minutes to process the content and make it visible on your profile. Zoe Studio polls the publishing status so you can follow the result.</div>
+
+          <div id="progressWrap" class="progress-wrap"><div class="help" id="progressLabel">Preparing transfer…</div><progress id="progress" value="0" max="100"></progress></div>
+          <button id="publishButton" class="button primary" type="submit" disabled>Publish to TikTok</button>
+          <div id="result" class="status result hidden" aria-live="polite"></div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><div>© 2026 Zoe Studio.</div><div class="footer-links"><a href="/">Home</a><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a></div></div></footer>
+  <script type="module" src="/studio.js"></script>
+</body>
+</html>

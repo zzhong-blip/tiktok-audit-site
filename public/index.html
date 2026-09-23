@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Zoe Studio helps creators prepare, review, and publish original video and photo content with clear posting controls." />
+  <title>Zoe Studio — Creator Publishing Workspace</title>
+  <link rel="icon" href="/assets/zoe-studio-icon.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/"><img src="/assets/zoe-studio-icon.jpg" alt="Zoe Studio" /><span>Zoe Studio</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="optional" href="#workflow">Workflow</a>
+        <a class="optional" href="#privacy">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a class="button primary" href="/studio.html">Open Studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">Creator publishing workspace</div>
+        <h1>Prepare. Review. Publish with control.</h1>
+        <p class="lede">Zoe Studio is a web application that helps creators prepare and publish their original video and photo content. Connect your account securely, review creator-specific publishing options, and confirm every post before it is sent.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/api/tiktok/oauth/start">Connect TikTok</a>
+          <a class="button secondary" href="/studio.html">Preview the Studio</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Product preview">
+        <span class="badge"><span class="dot"></span> Secure creator workflow</span>
+        <div class="preview-row"><div><strong>1. Connect</strong><br><span class="help">Authorize with TikTok OAuth</span></div><span>→</span></div>
+        <div class="preview-row"><div><strong>2. Prepare</strong><br><span class="help">Choose media and write post details</span></div><span>→</span></div>
+        <div class="preview-row"><div><strong>3. Review</strong><br><span class="help">Select privacy and interactions manually</span></div><span>→</span></div>
+        <div class="preview-row"><div><strong>4. Confirm</strong><br><span class="help">Explicitly approve each publication</span></div><span>✓</span></div>
+      </aside>
+    </section>
+
+    <section id="workflow" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <h2>A creator-first publishing flow.</h2>
+          <p>Zoe Studio keeps the important decisions in the creator's hands. Posting controls are refreshed for the connected account before publication rather than assumed or preselected.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="step">STEP 01</div><h3>Connect securely</h3><p>Sign in through TikTok's authorization flow. Sensitive access credentials stay on the server side and are not exposed to browser JavaScript.</p></article>
+          <article class="card"><div class="step">STEP 02</div><h3>Prepare original content</h3><p>Select a video or photos, write the post text, and review the account's current privacy and interaction options.</p></article>
+          <article class="card"><div class="step">STEP 03</div><h3>Approve each post</h3><p>No privacy level is preselected and interaction controls start off. A publication is initiated only after the creator explicitly confirms it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section">
+      <div class="wrap split">
+        <article class="card">
+          <div class="eyebrow">Designed for clarity</div>
+          <h2>Know what will be sent.</h2>
+          <ul class="checklist">
+            <li>Current creator-specific privacy options are loaded before posting.</li>
+            <li>Comments, Duet, and Stitch controls respect account capabilities.</li>
+            <li>Posting requires an explicit consent confirmation.</li>
+            <li>Video transfer is streamed to TikTok after initialization.</li>
+            <li>Temporary photo media is automatically expired from Zoe Studio storage.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Your choices</div>
+          <h2>Disconnect when you want.</h2>
+          <p>Zoe Studio uses authorization only for the publishing features the creator chooses to use. The app does not expose access or refresh tokens in the browser.</p>
+          <p><a class="button secondary" href="/privacy.html">Read Privacy Policy</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>© 2026 Zoe Studio. Creator publishing tools.</div>
+      <div class="footer-links"><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a><a href="/studio.html">Studio</a></div>
+    </div>
+  </footer>
+</body>
+</html>
